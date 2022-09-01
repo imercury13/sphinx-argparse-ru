@@ -272,6 +272,7 @@ class ArgParseDirective(Directive):
         nodescription=unchanged,
         markdown=flag,
         markdownhelp=flag,
+        rulang=unchanged,
     )
 
     def _construct_manpage_specific_structure(self, parser_info):
