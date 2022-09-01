@@ -370,7 +370,10 @@ class ArgParseDirective(Directive):
             elif 'choices' not in arg:
                 arg_items.append(nodes.paragraph(text='Undocumented'))
             if 'choices' in arg:
-                arg_items.append(nodes.paragraph(text='Possible choices: ' + ', '.join(arg['choices'])))
+                if 'ruflag' in self.options:
+                    arg_items.append(nodes.paragraph(text='Возможные значения: ' + ', '.join(arg['choices'])))
+                else:
+                    arg_items.append(nodes.paragraph(text='Possible choices: ' + ', '.join(arg['choices'])))
             items.append(
                 nodes.option_list_item(
                     '',
@@ -399,7 +402,10 @@ class ArgParseDirective(Directive):
             elif 'choices' not in opt:
                 opt_items.append(nodes.paragraph(text='Undocumented'))
             if 'choices' in opt:
-                opt_items.append(nodes.paragraph(text='Possible choices: ' + ', '.join(opt['choices'])))
+                if 'ruflag' in self.options:
+                    opt_items.append(nodes.paragraph(text='Возможные значения: ' + ', '.join(opt['choices'])))
+                else:
+                    opt_items.append(nodes.paragraph(text='Possible choices: ' + ', '.join(opt['choices'])))
             items.append(
                 nodes.option_list_item(
                     '',
