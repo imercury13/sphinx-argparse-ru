@@ -35,6 +35,7 @@ nosetests.xml
 .idea
 .pydevproject
 .env/
+env/
 
 docs/_build/
 .cache/
