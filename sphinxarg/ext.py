@@ -134,7 +134,7 @@ def print_action_groups(data, nested_content, markdown_help=False, settings=None
                 # Build the help text
                 arg = []
                 if 'choices' in entry:
-                    arg.append(f"Possible choices: {', '.join(str(c) for c in entry['choices'])}\n")
+                    arg.append(f"Возможные значения: {', '.join(str(c) for c in entry['choices'])}\n")
                 if 'help' in entry:
                     arg.append(entry['help'])
                 if entry['default'] is not None and entry['default'] not in [
@@ -185,8 +185,8 @@ def print_subcommands(data, nested_content, markdown_help=False, settings=None):
     definitions = map_nested_definitions(nested_content)
     items = []
     if 'children' in data:
-        subcommands = nodes.section(ids=["Sub-commands:"])
-        subcommands += nodes.title('Sub-commands:', 'Sub-commands:')
+        subcommands = nodes.section(ids=["Команды:"])
+        subcommands += nodes.title('Команды:', 'Команды:')
 
         for child in data['children']:
             sec = nodes.section(ids=[child['name']])
@@ -272,7 +272,6 @@ class ArgParseDirective(Directive):
         nodescription=unchanged,
         markdown=flag,
         markdownhelp=flag,
-        rulang=unchanged,
     )
 
     def _construct_manpage_specific_structure(self, parser_info):
@@ -324,7 +323,7 @@ class ArgParseDirective(Directive):
         options_section = nodes.section('', nodes.title(text='Options'), ids=['options-section'])
         if 'args' in parser_info:
             options_section += nodes.paragraph()
-            options_section += nodes.subtitle(text='Positional arguments:')
+            options_section += nodes.subtitle(text='Позиционные аргументы:')
             options_section += self._format_positional_arguments(parser_info)
         for action_group in parser_info['action_groups']:
             if 'options' in parser_info:
@@ -342,7 +341,7 @@ class ArgParseDirective(Directive):
             items.append(options_section)
         if 'nosubcommands' not in self.options:
             # SUBCOMMANDS section (non-standard)
-            subcommands_section = nodes.section('', nodes.title(text='Sub-Commands'), ids=['subcommands-section'])
+            subcommands_section = nodes.section('', nodes.title(text='Команды'), ids=['subcommands-section'])
             if 'children' in parser_info:
                 subcommands_section += self._format_subcommands(parser_info)
             if len(subcommands_section) > 1:
@@ -370,10 +369,8 @@ class ArgParseDirective(Directive):
             elif 'choices' not in arg:
                 arg_items.append(nodes.paragraph(text='Undocumented'))
             if 'choices' in arg:
-                if 'ruflag' in self.options:
-                    arg_items.append(nodes.paragraph(text='Возможные значения: ' + ', '.join(arg['choices'])))
-                else:
-                    arg_items.append(nodes.paragraph(text='Possible choices: ' + ', '.join(arg['choices'])))
+                arg_items.append(nodes.paragraph(text='Возможные значения: ' + ', '.join(arg['choices'])))
+    
             items.append(
                 nodes.option_list_item(
                     '',
@@ -402,10 +399,8 @@ class ArgParseDirective(Directive):
             elif 'choices' not in opt:
                 opt_items.append(nodes.paragraph(text='Undocumented'))
             if 'choices' in opt:
-                if 'ruflag' in self.options:
-                    opt_items.append(nodes.paragraph(text='Возможные значения: ' + ', '.join(opt['choices'])))
-                else:
-                    opt_items.append(nodes.paragraph(text='Possible choices: ' + ', '.join(opt['choices'])))
+                opt_items.append(nodes.paragraph(text='Возможные значения: ' + ', '.join(opt['choices'])))
+
             items.append(
                 nodes.option_list_item(
                     '',

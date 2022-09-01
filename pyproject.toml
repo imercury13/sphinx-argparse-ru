@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "sphinx-argparse"
+name = "sphinx-argparse-ru"
 version = "0.3.1"
 description = "A sphinx extension that automatically documents argparse commands and options"
 readme = "README.md"
-repository = "https://github.com/ashb/sphinx-argparse"
-authors = ["Ash Berlin-Taylor <ash_github@firemirror.com>"]
+repository = "https://github.com/imercury13/sphinx-argparse-ru"
+authors = ["Ash Berlin-Taylor <ash_github@firemirror.com>", "Igor Kuptsov <ya360@uh.net.ru>"]
 license = "MIT"
 classifiers = [
   "Framework :: Sphinx :: Extension",

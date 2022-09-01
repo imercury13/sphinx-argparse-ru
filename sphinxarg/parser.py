@@ -157,9 +157,9 @@ def parse_parser(parser, data=None, **kwargs):
         # Since python-3.10 'optional arguments' changed to 'options'
         # more info: https://github.com/python/cpython/pull/23858
         if action_group.title == 'optional arguments' or action_group.title == 'options':
-            action_group.title = 'Named Arguments'
+            action_group.title = 'Опции'
         if action_group.title == 'positional arguments':
-            action_group.title = 'Positional Arguments'
+            action_group.title = 'Позиционные аргументы'
 
         group = {
             'title': action_group.title,
